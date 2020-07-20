@@ -1,0 +1,8 @@
+<h1>There are <%= @total_parks%> parks in <%= @view_state%> </h1>
+<% @parks.each do |park| %>
+<section class="park">
+  <section class="name"> <%= park.name %> </section>
+  <section class="description"> <%= park.description %> </section>
+  <section class="direction"> <%= park.direction %> </section>
+</section>
+<%end  %>

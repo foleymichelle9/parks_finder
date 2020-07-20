@@ -3,27 +3,27 @@ require "rails_helper"
 RSpec.describe"As a user" do
   it "Shows national parks and their data" do
     visit "/"
-    select "Tennesee", from: :state
+    select "Tennessee", from: :state
     click_on 'Find Parks'
 
-    expect(current_path).to eq(search_path)
+    expect(current_path).to eq(parks_path)
 
-    expect(page).to have_content('There are 97 parks in Tennesee')
-    expect(page).to have_css('.park', count: 1)
+    expect(page).to have_content('There are 18 parks in TN')
+    expect(page).to have_css('.park', count: 18)
 
     within(first('.park')) do
       within('.name') do
-          expect(page).to have_content('park')
+          expect(page).to have_content('Boston Harbor Islands')
       end
       within('.description') do
-          expect(page).to have_content('description')
+          expect(page).to have_content(". . . where you can walk a Civil War-era fort, visit historic lighthouses, explore tide pools, hike lush trails, camp under the stars, or relax while fishing, picnicking or swimming-all within reach of downtown Boston. Youth programs, visitor services, research, wildlife management, and more are coordinated on the park's 34 islands and peninsulas by the Boston Harbor Islands Partnership.")
       end
       within('.direction') do
-          expect(page).to have_content('Fire Nation')
+          expect(page).to have_content("There are many ways to enjoy Boston Harbor Islands and many ways to get there. For more information on how to get to the park by ferry, car, or private boat, please visit www.bostonharborislands.org.")
       end
-      within('.hours') do
-          expect(page).to have_content('Aang')
-      end
+      # within('.hours') do
+      #     expect(page).to have_content()
+      # end
     end
   end
 end
